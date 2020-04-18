@@ -6,26 +6,27 @@
     </div>
     <div class="ui top attached segment">
         <div class="ui divided items">
+            <% blogs.forEach((blog) => { %>
             <div class="item">
                 <div class="ui medium image">
-                    <img src="/Images/back.jpg" alt="halo image" class="item">
+                    <img src="<%=blog.url%>" alt="image" class="item">
                 </div>
                 <div class="content">
                     <div class="header">
-                        <a href="#" class="header">Halo-5</a>
+                        <a href="/more/<%=blog._id%>" class="header"><%=blog.title%></a>
                     </div>
                     <div class="meta">
-                        <span>20/04/2020</span>
+                        <span><%=blog.created.toDateString()%></span>
                     </div>
                     <div class="description">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa quaerat accusamus similique
-                            officiis totam earum necessitatibus est dolore quam qui.</p>
+                        <p><%=blog.body%></p>
                     </div>
                     <div class="extra">
-                        <a href="#" class="btn btn-primary">Read More...</a>
+                        <a href="/read/<%=blog._id%>" class="btn btn-primary">Read More...</a>
                     </div>
                 </div>
             </div>
+            <% }); %>
         </div>
     </div>
 </div>

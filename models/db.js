@@ -14,6 +14,10 @@ var schema = new mongoose.Schema({
         default: "https://www.blackbeltkaratestudio.com/wp-content/uploads/2017/04/default-image.jpg"
     },
     body: String,
+    created: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 var blog = mongoose.model("blog", schema);

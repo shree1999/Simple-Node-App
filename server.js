@@ -20,7 +20,9 @@ var db = blog.blog;
 
 // routes...
 app.get("/", (req, res) => {
-    res.render("index");
+    db.find({}, (error, blogs) => {
+        blogs ? res.render("index", { blogs: blogs }) : console.log(error);
+    });
 });
 
 app.get("/new/blog", (req, res) => {
