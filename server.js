@@ -20,6 +20,11 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/new/blog", (req, res) => {
+    res.render("create");
+});
+
+
 app.listen(PORT, () => {
     console.log("Server up and running at port: " + PORT);
 });
