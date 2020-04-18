@@ -1,29 +1,23 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/Blog-App', {
+mongoose.connect("mongodb://127.0.0.1:27017/Blog-App", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-mongoose.set("useFindAndModify", false);
+mongoose.set("useFindAndModify", true);
 
-const schema = new mongoose.Schema({
-    title: {
+var schema = new mongoose.Schema({
+    title: String,
+    url: {
         type: String,
-        default: "Please Provide Name",
+        default: "https://www.blackbeltkaratestudio.com/wp-content/uploads/2017/04/default-image.jpg"
     },
-    urlImage: {
-        type: String,
-        default: "https://www.blackbeltkaratestudio.com/wp-content/uploads/2017/04/default-image.jpg",
-    },
-    body: {
-        type: String,
-        default: "Please Provide a good description."
-    },
+    body: String,
 });
 
-const blog = mongoose.model("blog", schema);
+var blog = mongoose.model("blog", schema);
 
 module.exports = {
     blog: blog
-};
+}
