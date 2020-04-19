@@ -41,6 +41,26 @@ app.get("/more/:id", (req, res) => {
     });
 });
 
+app.get("/blog/edit/:id", (req, res) => {
+    db.findById(req.params.id, (error, blog) => {
+        if (error) {
+            console.log(error);
+        } else {
+            res.render("edit", { blog: blog });
+        }
+    });
+});
+
+app.put("/blog/:id", (req, res) => {
+    db.findByIdAndUpdate(req.params.id, req.body, (error) => {
+        if (error) {
+            res.redirect("/");
+        } else {
+            res.redirect("/more/" + req.params.id);
+        }
+    });
+});
+
 app.delete("/blog/:id", (req, res) => {
     db.findByIdAndRemove(req.params.id, req.body, (error, blog) => {
         if (error) {
