@@ -33,7 +33,23 @@ app.post("/blog", (req, res) => {
     db.create(req.body, (error, newBlog) => {
         error ? console.log("Error") : res.redirect("/");
     });
-})
+});
+
+app.get("/more/:id", (req, res) => {
+    db.findById(req.params.id, (error, blog) => {
+        error ? res.redirect("/") : res.render("fullBlog", { blog: blog });
+    });
+});
+
+app.delete("/blog/:id", (req, res) => {
+    db.findByIdAndRemove(req.params.id, req.body, (error, blog) => {
+        if (error) {
+            console.log(error);
+        } else {
+            res.redirect("/");
+        }
+    });
+});
 
 
 app.listen(PORT, () => {
