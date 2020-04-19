@@ -19,7 +19,7 @@
                         <span><%=blog.created.toDateString()%></span>
                     </div>
                     <div class="description">
-                        <p><%=blog.body%></p>
+                        <p><%=blog.body.substring(0,100)%></p>
                     </div>
                     <div class="extra">
                         <a href="/more/<%=blog._id%>" class="btn btn-primary">Read More...</a>
